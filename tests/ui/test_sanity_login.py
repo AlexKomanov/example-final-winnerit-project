@@ -1,4 +1,5 @@
 import allure
+from allure_commons.types import AttachmentType
 from playwright.sync_api import Page, expect
 import utils.configs as configs
 
@@ -16,4 +17,5 @@ def test_sanity_login(page: Page, login_page, products_page):
     products_page.validate_secondary_header_aria_snapshot()
     products_page.validate_shopping_cart_is_visible()
     products_page.validate_page_url(configs.products_url)
+    allure.attach(page.screenshot(full_page=True), name="screenshot", attachment_type=AttachmentType.PNG)
     page.wait_for_timeout(2000)

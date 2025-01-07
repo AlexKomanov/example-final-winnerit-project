@@ -1,4 +1,6 @@
+from allure_commons.types import AttachmentType
 from playwright.sync_api import Page, expect
+import allure
 
 
 def test_end_2_ebd(page: Page, login_page):
@@ -34,5 +36,5 @@ def test_end_2_ebd(page: Page, login_page):
     page.get_by_role("button", name="Open Menu").click()
     page.locator("[data-test=\"logout-sidebar-link\"]").click()
     expect(page.locator("[data-test=\"login-container\"] div").filter(has_text="Login").first).to_be_visible()
-
+    allure.attach(page.screenshot(full_page=True), name="screenshot", attachment_type=AttachmentType.PNG)
     page.wait_for_timeout(2000)
