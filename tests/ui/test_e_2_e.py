@@ -4,9 +4,8 @@ from playwright.sync_api import Page, expect
 def test_end_2_ebd(page: Page, login_page):
     page.goto("https://www.saucedemo.com/")
 
-    page.locator("[data-test=\"username\"]").fill("standard_user")
-    page.locator("[data-test=\"password\"]").fill("secret_sauce")
-    page.locator("[data-test=\"login-button\"]").click()
+    login_page.login_to_application("standard_user", "secret_sauce")
+
     expect(page.locator("[data-test=\"shopping-cart-link\"]")).to_be_visible()
     page.locator("[data-test=\"add-to-cart-sauce-labs-backpack\"]").click()
     page.locator("[data-test=\"add-to-cart-sauce-labs-bike-light\"]").click()
