@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, expect
 
 
-def test_end_2_ebd(page: Page):
+def test_end_2_ebd(page: Page, login_page):
     page.goto("https://www.saucedemo.com/")
 
     page.locator("[data-test=\"username\"]").fill("standard_user")
