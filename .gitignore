@@ -1,3 +1,5 @@
 .idea/
 .venv/
 allure-results/
+**/__pycache__
+*.pyc
